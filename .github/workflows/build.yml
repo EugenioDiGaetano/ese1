@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - master  # Puoi specificare il nome del ramo su cui vuoi attivare il build
+      - main  # Puoi specificare il nome del ramo su cui vuoi attivare il build
 
 jobs:
   build:

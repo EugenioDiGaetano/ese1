@@ -17,6 +17,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '11'  # Specifica la versione di JDK da utilizzare per il build
+        distribution: 'microsoft'
 
     - name: Build with Maven
       run: mvn -B clean package  # Comando per eseguire il build con Maven

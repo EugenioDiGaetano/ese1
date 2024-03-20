@@ -1,0 +1,28 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master  # Puoi specificare il nome del ramo su cui vuoi attivare il build
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Specifica il sistema operativo in cui verrà eseguito il build
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2  # Usa l'azione predefinita per effettuare il checkout del repository
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'  # Specifica la versione di JDK da utilizzare per il build
+
+    - name: Build with Maven
+      run: mvn -B clean package  # Comando per eseguire il build con Maven
+
+    - name: Archive build artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: jar-file
+        path: target/*.jar  # Specifica il percorso dei file JAR generati dal build
